@@ -44,6 +44,20 @@ function stopRecording() {
   console.log('WAV file saved:', WAVE_OUTPUT_FILENAME);
 }
 
+function playAudio() {
+    const playProcess = spawn('pcm-play', ['-r', SAMPLE_RATE, '-b', BITS_PER_SAMPLE, '-c', CHANNELS, WAVE_FILE_PATH]);
+  
+    playProcess.on('error', (err) => {
+      console.error('Failed to play audio:', err);
+    });
+  
+    playProcess.on('exit', (code) => {
+      if (code !== 0) {
+        console.error('Audio playback process exited with code:', code);
+      }
+    });
+  }
+
 // Function to construct the WAV file header
 function constructWavHeader(dataSize) {
   const header = Buffer.alloc(44);
@@ -58,19 +72,7 @@ function constructWavHeader(dataSize) {
   return header;
 }
 
-function playAudio() {
-    const playProcess = spawn('pcm-play', ['-r', SAMPLE_RATE, '-b', BITS_PER_SAMPLE, '-c', CHANNELS, WAVE_FILE_PATH]);
-  
-    playProcess.on('error', (err) => {
-      console.error('Failed to play audio:', err);
-    });
-  
-    playProcess.on('exit', (code) => {
-      if (code !== 0) {
-        console.error('Audio playback process exited with code:', code);
-      }
-    });
-  }
+
 
 // Function to construct the fmt-chunk
 function constructFmtChunk() {
@@ -112,11 +114,6 @@ function constructDataChunk(audioData) {
   }
 
   return dataChunk;
-}
-
-// Function to process the recorded audio data
-function processAudioData(data) {
-  audioData.push(data);
 }
 
 module.exports = {startRecording,stopRecording,playAudio}
