@@ -72,7 +72,3 @@ def record_audio():
     wf.writeframes(b''.join(frames))
     wf.close()
     file_exists = True
-
-# Define the user interface for Voice Recorder using Python
-file_exists = False
-recording = False
