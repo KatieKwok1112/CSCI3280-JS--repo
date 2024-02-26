@@ -1,5 +1,4 @@
 import struct
-import subprocess
 
 def change_audio_speed(input_file, output_file, speed_factor):
     if speed_factor <= 0:
@@ -24,8 +23,10 @@ def change_audio_speed(input_file, output_file, speed_factor):
     if speed_factor == 1:
         modified_audio_data = audio_data
     else:
+        modified_audio_data = b""
         step = int(1 / speed_factor)
-        modified_audio_data = audio_data[::step]
+        for i in range(0, len(audio_data), step):
+            modified_audio_data += audio_data[i:i+step]
 
     # Update the riff chunk size
     new_riff_chunk_size = 36 + new_data_chunk_size
@@ -39,10 +40,3 @@ def change_audio_speed(input_file, output_file, speed_factor):
         f.write(data_chunk_header)
         f.write(struct.pack("<I", new_data_chunk_size))
         f.write(modified_audio_data)
-
-    # Play the modified audio file
-    subprocess.Popen(["afplay", output_file])
-    
-    def play_modified_audio(input_file):
-        output_file = "modified_audio.wav"
-        change_audio_speed(input_file, output_file, 0.5)  r
