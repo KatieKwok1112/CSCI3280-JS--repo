@@ -1,6 +1,4 @@
 import pyaudio
-from tkinter import *
-import queue
 import wave
 import threading
 from tkinter import messagebox
@@ -76,27 +74,5 @@ def record_audio():
     file_exists = True
 
 # Define the user interface for Voice Recorder using Python
-voice_rec = Tk()
-voice_rec.geometry("500x200")
-voice_rec.title("Recorder")
-# Create a queue to contain the audio data
-q = queue.Queue()
-# Declare variables and initialize them
-recording = False
 file_exists = False
-
-# Label to display app title in Python Voice Recorder Project
-title_lbl = Label(voice_rec, text="Start Recording Now")
-title_lbl.grid(row=0, column=0, columnspan=3)
-
-# Button to record audio
-record_btn = Button(voice_rec, text="Record Audio", command=lambda m=1: threading_rec(m))
-# Stop button
-stop_btn = Button(voice_rec, text="Stop Recording", command=lambda m=2: threading_rec(m))
-# Play button
-play_btn = Button(voice_rec, text="Play Recording", command=lambda m=3: threading_rec(m))
-# Position buttons
-record_btn.grid(row=1, column=1)
-stop_btn.grid(row=1, column=0)
-play_btn.grid(row=1, column=2)
-voice_rec.mainloop()
+recording = False

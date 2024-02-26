@@ -1,26 +1,22 @@
 import pyaudio
+# Function to save audio file
 import wave
 
-CHUNK_SIZE = 1024
-FORMAT = pyaudio.paInt16
-CHANNELS = 1
-SAMPLE_RATE = 44100
+def save_audio(filename, frames, p):
+    num_frames = len(frames)
+    num_channels = CHANNELS
+    sample_width = p.get_sample_size(FORMAT)
+    sample_rate = SAMPLE_RATE
 
-# Function to save audio file
-def save_audio(filename, frames):
-    wf = wave.open(filename, 'wb')
-    wf.setnchannels(CHANNELS)
-    wf.setsampwidth(p.get_sample_size(FORMAT))
-    wf.setframerate(SAMPLE_RATE)
-    wf.writeframes(b''.join(frames))
-    wf.close()
+    with wave.open(filename, 'wb') as wf:
+        wf.setnchannels(num_channels)
+        wf.setsampwidth(sample_width)
+        wf.setframerate(sample_rate)
+        wf.writeframes(b''.join(frames))
 
-# Create PyAudio object
-p = pyaudio.PyAudio()
+    file_exists = True
 
-# Define the number of audio files you want to save
-num_files = 5
-
+num_files = 5  
 for i in range(num_files):
     # Create a new filename for each iteration
     filename = f"audio_{i}.wav"
