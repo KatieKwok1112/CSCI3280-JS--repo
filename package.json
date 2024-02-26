@@ -1,0 +1,14 @@
+{
+  "name": "csci3280-js--repo",
+  "version": "1.0.0",
+  "description": "express tut by siplilearn",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "nat",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

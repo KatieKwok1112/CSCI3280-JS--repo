@@ -1,0 +1,51 @@
+// Check browser support for MediaRecorder
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder) {
+  // Constraints for audio media
+  const constraints = { audio: true };
+
+  // Access the microphone
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then(function(stream) {
+      const chunks = []; // Array to store audio chunks
+
+      // Create a MediaRecorder instance
+      const mediaRecorder = new MediaRecorder(stream);
+
+      // Event handler for audio data
+      mediaRecorder.ondataavailable = function(event) {
+        chunks.push(event.data);
+      };
+
+      // Event handler for stopping recording
+      mediaRecorder.onstop = function() {
+        // Create a Blob from the audio chunks
+        const audioBlob = new Blob(chunks, { type: 'audio/wav' });
+
+        // Create a URL for the Blob
+        const audioUrl = URL.createObjectURL(audioBlob);
+
+        // Create a link element to download the audio file
+        const downloadLink = document.createElement('a');
+        downloadLink.href = audioUrl;
+        downloadLink.download = 'recording.wav';
+        downloadLink.click();
+
+        // Clean up resources
+        chunks.length = 0;
+        URL.revokeObjectURL(audioUrl);
+      };
+
+      // Start recording
+      mediaRecorder.start();
+
+      // Stop recording after a certain duration (e.g., 5 seconds)
+      setTimeout(function() {
+        mediaRecorder.stop();
+      }, 5000);
+    })
+    .catch(function(error) {
+      console.error('Error accessing microphone:', error);
+    });
+} else {
+  console.error('MediaRecorder or getUserMedia is not supported in this browser.');
+}
