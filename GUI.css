@@ -1,0 +1,321 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*the window setting*/
+body { 
+    min-height: 100vh;
+    background-color: rgb(230, 235, 238);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 70px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    background: linear-gradient( rgb(51, 157, 156), rgb(132, 206, 220));
+    z-index: 100;
+    
+}
+.recboard {
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-self: flex-start;
+    flex-grow: 1;
+    width: 30%;
+    background: linear-gradient(to left, rgba(178, 246, 252, 0.7), rgba(39, 172, 195, 0.3));
+    flex-wrap: wrap;
+}
+
+.footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 15%;
+    padding-right: 15%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    background: linear-gradient(rgb(221, 237, 241), rgb(142, 201, 224));
+    z-index: 100;
+    flex-wrap: wrap;
+}
+
+
+.logo {
+    display: flex;
+    margin-left: 5%;
+    font-size: 32px;
+    color: white;
+    text-decoration: none;
+    font-weight: 50;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    gap: 20px;
+}
+
+.import {
+    position: relative;
+    display: block;
+    border: none;
+    outline: none;
+    width: 6rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(lightblue, rgb(58, 155, 164));
+    color: rgb(229, 234, 237);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20;
+    font-weight: 500;
+    box-shadow: 3px 3px 3px 0px rgb(186, 226, 237);  
+
+}
+.edit {
+    position: relative;
+    display: block;
+    border: none;
+    outline: none;
+    width: 6rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(lightblue, rgb(58, 155, 164));
+    color: rgb(229, 234, 237);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20;
+    font-weight: 500;
+    box-shadow: 3px 3px 3px 0px rgb(186, 226, 237);  
+}
+.library {
+    position: relative;
+    display: block;
+    border: none;
+    outline: none;
+    width: 6rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(lightblue, rgb(58, 155, 164));
+    color: rgb(229, 234, 237);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20;
+    font-weight: 500;
+    box-shadow: 3px 3px 3px 0px rgb(186, 226, 237);  
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: space-evenly;
+    height: 5rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(rgb(162, 227, 244), white);
+    width: 100%;
+    z-index: 2;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    color: rgb(41, 135, 194);
+    font-family:Arial, Helvetica, sans-serif;
+    box-shadow: 3px 3px 3px 0px rgb(186, 226, 237);  
+}
+
+.recinfo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.recbut {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+
+.mic {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: none;
+    font-size: 2.5rem;
+    background-color: white;
+    color: crimson;  
+    box-shadow: 0px 4px 4px 0px grey;  
+}
+
+/*
+.mic {
+    position: relative;
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    font-size: 4rem;
+    border: none;
+    outline: none;
+    flex-shrink: 50px;
+    border-radius: 50%;
+    color: red;
+    background-color:white;
+    z-index: 200;
+    display: flex;
+    align-self: center;
+   
+}
+
+.mic:after,
+.mic:before {
+    --pad: 0rem;
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 0;
+    background-color: rgb(244, 234, 234);
+    top: var(--pad);
+    left: var(--pad);
+    right: var(--pad);
+    bottom: var(--pad);
+    border-radius: 50%;
+}
+.mic:after{
+    transition: 0.4s;
+}
+.mic:before{
+    transition: 0.2s;
+}
+.mic:hover:before{
+    --pad: -1rem;
+}
+
+.mic:hover:after{
+    --pad: -2rem;
+}
+.mic span {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    font-size: 6rem;
+}
+.mic:is-recording:after{
+    animation: smoothPadAfter 0.6s ease-in alternate-reverse forwards infinite;
+}
+.mic:is-recording:before{
+    animation: smoothPadBefore 0.6s ease-in alternate-reverse forwards infinite;
+}
+
+@keyframes smoothPadAfter {
+    0% {
+        top: -2rem;
+        left: -2rem;
+        right: -2rem;
+        bottom: -2rem;
+    }
+    100% {
+        top: -1rem;
+        left: -1rem;
+        right: -1rem;
+        bottom: -1rem;
+    }
+}
+@keyframes smoothPadBefore {
+    0% {
+        top: -1rem;
+        left: -1rem;
+        right: -1rem;
+        bottom: -1rem;
+    }
+    100% {
+        top: -0.5rem;
+        left: -0.5rem;
+        right: -0.5rem;
+        bottom: -0.5rem;
+    }
+}
+
+*/
+.stop {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    border: none;
+    font-size: 2rem;
+    padding-top: 4px;
+    padding-left: 1.5px;
+    background-color: crimson;
+    color: white;   
+    box-shadow: 0px 4px 4px 0px grey; 
+}
+
+
+.playbar {    
+    display: flex;
+    align-items: center;
+    
+}
+    
+.playback{
+    box-shadow: 0px 0px 1rem rgba(0,0,0,0.2);
+    border-radius: 999px;
+}
+
+.is-hidder {
+    display: none;
+}
+
+.speed {
+    margin-left: 2rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.halfspeed {
+    position: relative;
+    display: block;
+    border: none;
+    outline: none;
+    width: 4rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    background-color: rgb(212, 65, 62);
+    color: white;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20;
+    font-weight: 500;
+    box-shadow: 0px 3px 3px 0px grey; 
+}
+
+.doublespeed {
+    position: relative;
+    display: block;
+    border: none;
+    outline: none;
+    width: 4rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    background-color: rgb(212, 65, 62);
+    color: white;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20;
+    font-weight: 500;
+    box-shadow: 0px 3px 3px 0px grey; 
+}
